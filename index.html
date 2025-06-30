@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Convidados</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+        }
+        .search-box {
+            padding: 8px;
+            width: 200px;
+            border-radius: 4px;
+            border: 1px solid #bdc3c7;
+        }
+        .filter-buttons button {
+            padding: 8px 12px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+        }
+        .filter-buttons button:hover {
+            background-color: #2980b9;
+        }
+        .guest-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 10px;
+        }
+        .guest-item {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+        }
+        .guest-item input[type="checkbox"] {
+            margin-right: 15px;
+            transform: scale(1.5);
+        }
+        .guest-info {
+            flex-grow: 1;
+        }
+        .guest-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .guest-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+        }
+        .guest-status {
+            color: #7f8c8d;
+        }
+        .guest-table {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .present {
+            background-color: #e8f8f5;
+            border-left: 4px solid #2ecc71;
+        }
+        .absent {
+            background-color: #fdedec;
+            border-left: 4px solid #e74c3c;
+        }
+        .stats {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #34495e;
+            color: white;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        .map-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .map-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .map-description {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        @media (max-width: 600px) {
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .filter-buttons {
+                display: flex;
+                justify-content: space-between;
+            }
+            .filter-buttons button {
+                margin-left: 0;
+                flex-grow: 1;
+            }
+            .guest-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Convidados</h1>
+    
+    <div class="tabs">
+        <div class="tab active" data-tab="guest-list">Lista de Convidados</div>
+        <div class="tab" data-tab="map">Mapa do Local</div>
+    </div>
+    
+    <div class="tab-content active" id="guest-list-tab">
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="Pesquisar convidado..." id="searchInput">
+            <div class="filter-buttons">
+                <button id="showAll">Todos</button>
+                <button id="showPresent">Presentes</button>
+                <button id="showAbsent">Faltantes</button>
+            </div>
+        </div>
+        
+        <div class="guest-list" id="guestList"></div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value" id="totalGuests">40</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="presentGuests">0</div>
+                <div class="stat-label">Presentes</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="absentGuests">40</div>
+                <div class="stat-label">Faltantes</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-content" id="map-tab">
+        <div class="map-container">
+            <h2>Disposição das Mesas</h2>
+            <img src="image.png" alt="Mapa do Local com Mesas">
+            <p class="map-description">Visualize acima a disposição das mesas no local do evento.</p>
+        </div>
+    </div>
+
+    <script>
+        // Lista de convidados inicial com números de mesa
+        const initialGuests = [
+            { id: 1, name: "Ana Silva", confirmed: false, table: 1 },
+            { id: 2, name: "Bruno Costa", confirmed: false, table: 1 },
+            { id: 3, name: "Carlos Mendes", confirmed: false, table: 2 },
+            { id: 4, name: "Daniela Ramos", confirmed: false, table: 2 },
+            { id: 5, name: "Eduardo Santos", confirmed: false, table: 3 },
+            { id: 6, name: "Fernanda Lima", confirmed: false, table: 3 },
+            { id: 7, name: "Gabriel Oliveira", confirmed: false, table: 4 },
+            { id: 8, name: "Helena Souza", confirmed: false, table: 4 },
+            { id: 9, name: "Igor Almeida", confirmed: false, table: 5 },
+            { id: 10, name: "Juliana Castro", confirmed: false, table: 5 },
+            { id: 11, name: "Kaique Pereira", confirmed: false, table: 6 },
+            { id: 12, name: "Larissa Martins", confirmed: false, table: 6 },
+            { id: 13, name: "Marcos Ribeiro", confirmed: false, table: 7 },
+            { id: 14, name: "Natália Ferreira", confirmed: false, table: 7 },
+            { id: 15, name: "Otávio Dias", confirmed: false, table: 8 },
+            { id: 16, name: "Patrícia Gomes", confirmed: false, table: 8 },
+            { id: 17, name: "Rafael Lopes", confirmed: false, table: 9 },
+            { id: 18, name: "Sara Monteiro", confirmed: false, table: 9 },
+            { id: 19, name: "Thiago Nunes", confirmed: false, table: 10 },
+            { id: 20, name: "Vanessa Carvalho", confirmed: false, table: 10 },
+            { id: 21, name: "William Teixeira", confirmed: false, table: 11 },
+            { id: 22, name: "Yasmin Moreira", confirmed: false, table: 11 },
+            { id: 23, name: "Zé Ricardo", confirmed: false, table: 12 },
+            { id: 24, name: "Amanda Rocha", confirmed: false, table: 12 },
+            { id: 25, name: "Breno Pinto", confirmed: false, table: 13 },
+            { id: 26, name: "Camila Tavares", confirmed: false, table: 13 },
+            { id: 27, name: "Diego Moura", confirmed: false, table: 14 },
+            { id: 28, name: "Elisa Barbosa", confirmed: false, table: 14 },
+            { id: 29, name: "Fábio Correia", confirmed: false, table: 15 },
+            { id: 30, name: "Giovana Rezende", confirmed: false, table: 15 },
+            { id: 31, name: "Hugo Andrade", confirmed: false, table: 16 },
+            { id: 32, name: "Isabela Campos", confirmed: false, table: 16 },
+            { id: 33, name: "João Vitor", confirmed: false, table: 17 },
+            { id: 34, name: "Karen Duarte", confirmed: false, table: 17 },
+            { id: 35, name: "Leonardo Peixoto", confirmed: false, table: 18 },
+            { id: 36, name: "Mariana Vasconcelos", confirmed: false, table: 18 },
+            { id: 37, name: "Nicolas Brito", confirmed: false, table: 19 },
+            { id: 38, name: "Olivia Cardoso", confirmed: false, table: 19 },
+            { id: 39, name: "Paulo Henrique", confirmed: false, table: 20 },
+            { id: 40, name: "Quezia Fonseca", confirmed: false, table: 20 }
+        ];
+
+        // Carrega os convidados do localStorage ou usa a lista inicial
+        let guests = JSON.parse(localStorage.getItem('guestList')) || initialGuests;
+
+        // Elementos DOM
+        const guestListElement = document.getElementById('guestList');
+        const searchInput = document.getElementById('searchInput');
+        const showAllButton = document.getElementById('showAll');
+        const showPresentButton = document.getElementById('showPresent');
+        const showAbsentButton = document.getElementById('showAbsent');
+        const totalGuestsElement = document.getElementById('totalGuests');
+        const presentGuestsElement = document.getElementById('presentGuests');
+        const absentGuestsElement = document.getElementById('absentGuests');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        // Filtro atual
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        // Renderiza a lista de convidados
+        function renderGuestList() {
+            guestListElement.innerHTML = '';
+            
+            const filteredGuests = guests.filter(guest => {
+                const matchesFilter = currentFilter === 'all' || 
+                                    (currentFilter === 'present' && guest.confirmed) || 
+                                    (currentFilter === 'absent' && !guest.confirmed);
+                
+                const matchesSearch = guest.name.toLowerCase().includes(currentSearch.toLowerCase());
+                
+                return matchesFilter && matchesSearch;
+            });
+
+            filteredGuests.forEach(guest => {
+                const guestElement = document.createElement('div');
+                guestElement.className = `guest-item ${guest.confirmed ? 'present' : 'absent'}`;
+                
+                guestElement.innerHTML = `
+                    <input type="checkbox" id="guest-${guest.id}" ${guest.confirmed ? 'checked' : ''}>
+                    <div class="guest-info">
+                        <div class="guest-name">${guest.name}</div>
+                        <div class="guest-details">
+                            <span class="guest-status">${guest.confirmed ? 'Confirmado' : 'Pendente'}</span>
+                            <span class="guest-table">Mesa: ${guest.table}</span>
+                        </div>
+                    </div>
+                `;
+                
+                const checkbox = guestElement.querySelector('input');
+                checkbox.addEventListener('change', () => {
+                    guest.confirmed = checkbox.checked;
+                    saveGuests();
+                    updateStats();
+                    // Atualiza a classe para refletir o novo status
+                    guestElement.className = `guest-item ${guest.confirmed ? 'present' : 'absent'}`;
+                    // Atualiza o status
+                    guestElement.querySelector('.guest-status').textContent = guest.confirmed ? 'Confirmado' : 'Pendente';
+                });
+                
+                guestListElement.appendChild(guestElement);
+            });
+            
+            updateStats();
+        }
+
+        // Atualiza as estatísticas
+        function updateStats() {
+            const presentCount = guests.filter(g => g.confirmed).length;
+            const absentCount = guests.length - presentCount;
+            
+            totalGuestsElement.textContent = guests.length;
+            presentGuestsElement.textContent = presentCount;
+            absentGuestsElement.textContent = absentCount;
+        }
+
+        // Salva a lista de convidados no localStorage
+        function saveGuests() {
+            localStorage.setItem('guestList', JSON.stringify(guests));
+        }
+
+        // Event listeners para filtros e busca
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderGuestList();
+        });
+
+        showAllButton.addEventListener('click', () => {
+            currentFilter = 'all';
+            renderGuestList();
+        });
+
+        showPresentButton.addEventListener('click', () => {
+            currentFilter = 'present';
+            renderGuestList();
+        });
+
+        showAbsentButton.addEventListener('click', () => {
+            currentFilter = 'absent';
+            renderGuestList();
+        });
+
+        // Event listeners para abas
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove a classe active de todas as abas e conteúdos
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Adiciona a classe active à aba clicada e ao conteúdo correspondente
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // Renderiza a lista inicial
+        renderGuestList();
+
+        // Verifica se há dados salvos
+        if (localStorage.getItem('guestList')) {
+            console.log('Dados de convidados carregados do localStorage.');
+        } else {
+            console.log('Usando lista de convidados inicial e salvando no localStorage.');
+            saveGuests();
+        }
+    </script>
+</body>
+</html>
