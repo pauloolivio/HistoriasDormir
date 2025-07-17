@@ -3,418 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Convidados</title>
+    <title>Histórias para Dormir</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
-            max-width: 1000px;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
         }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
         h1 {
-            color: #2c3e50;
-            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
-        .tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-        }
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            background-color: #f1f1f1;
-            border: 1px solid #ddd;
-            border-bottom: none;
-            border-radius: 5px 5px 0 0;
-            margin-right: 5px;
-        }
-        .tab.active {
-            background-color: #3498db;
-            color: white;
-            border-color: #2980b9;
-        }
-        .tab-content {
-            display: none;
-            padding: 20px;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-radius: 0 0 5px 5px;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-        }
-        .search-box {
-            padding: 8px;
-            width: 200px;
-            border-radius: 4px;
-            border: 1px solid #bdc3c7;
-        }
-        .filter-buttons button {
-            padding: 8px 12px;
-            margin-left: 5px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            background-color: #3498db;
-            color: white;
-        }
-        .filter-buttons button:hover {
-            background-color: #2980b9;
-        }
-        .guest-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 10px;
-        }
-        .guest-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-        }
-        .guest-item input[type="checkbox"] {
-            margin-right: 15px;
-            transform: scale(1.5);
-        }
-        .guest-info {
-            flex-grow: 1;
-        }
-        .guest-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-        }
-        .guest-details {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9em;
-        }
-        .guest-status {
-            color: #7f8c8d;
-        }
-        .guest-table {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        .child-age {
-            margin-left: 8px;
-            font-size: 0.8em;
-            background-color: #f39c12;
-            color: white;
-            padding: 2px 6px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-        }
-        .child-smile {
-            margin-left: 5px;
-            font-size: 1.2em;
-        }
-        .present {
-            background-color: #e8f8f5;
-            border-left: 4px solid #2ecc71;
-        }
-        .absent {
-            background-color: #fdedec;
-            border-left: 4px solid #e74c3c;
-        }
-        .stats {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #34495e;
-            color: white;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-around;
-        }
-        .stat-box {
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-        .stat-label {
-            font-size: 0.9em;
+        
+        .subtitle {
+            font-size: 1.2rem;
             opacity: 0.8;
         }
-        .map-container {
+        
+        .welcome-message {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             text-align: center;
-            margin-top: 20px;
         }
-        .map-container img {
-            max-width: 100%;
-            height: auto;
+        
+        .welcome-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .welcome-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .books-menu {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .book-item {
+            margin-bottom: 15px;
+        }
+        
+        .book-title {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 15px;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
         }
-        .map-description {
-            margin-top: 10px;
-            font-size: 0.9em;
+        
+        .book-title:hover {
+            background-color: #2980b9;
+        }
+        
+        .book-title::after {
+            content: '+';
+            font-size: 1.5rem;
+        }
+        
+        .book-title.active::after {
+            content: '-';
+        }
+        
+        .chapters-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f9f9f9;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .chapters-list.show {
+            max-height: 500px;
+        }
+        
+        .chapter-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .chapter-item:last-child {
+            border-bottom: none;
+        }
+        
+        .chapter-link {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .chapter-link:hover {
+            color: #1976d2;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
             color: #7f8c8d;
+            font-size: 0.9rem;
         }
-        @media (max-width: 600px) {
-            .controls {
-                flex-direction: column;
-                gap: 10px;
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
             }
-            .filter-buttons {
-                display: flex;
-                justify-content: space-between;
+            
+            header {
+                padding: 15px 0;
             }
-            .filter-buttons button {
-                margin-left: 0;
-                flex-grow: 1;
+            
+            h1 {
+                font-size: 1.8rem;
             }
-            .guest-list {
-                grid-template-columns: 1fr;
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .welcome-message, .books-menu {
+                padding: 15px;
+            }
+            
+            .welcome-title {
+                font-size: 1.5rem;
+            }
+            
+            .welcome-content {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Lista de Convidados</h1>
+    <header>
+        <div class="container">
+            <h1>Histórias para Dormir</h1>
+        </div>
+    </header>
     
-    <div class="tabs">
-        <div class="tab active" data-tab="guest-list">Lista de Convidados</div>
-        <div class="tab" data-tab="map">Mapa do Local</div>
-    </div>
-    
-    <div class="tab-content active" id="guest-list-tab">
-        <div class="controls">
-            <input type="text" class="search-box" placeholder="Pesquisar convidado..." id="searchInput">
-            <div class="filter-buttons">
-                <button id="showAll">Todos</button>
-                <button id="showPresent">Presentes</button>
-                <button id="showAbsent">Faltantes</button>
+    <div class="container">
+        <div class="welcome-message">
+            <h2 class="welcome-title">Bem-vindo à minha biblioteca de histórias</h2>
+            <div class="welcome-content">
+                <p>Explore uma coleção de histórias encantadoras para ler para seus filhos antes de dormir.</p>
+                <p>Os livros estão divididos em capítulos para facilitar a leitura.</p>
+                <p>Selecione um livro no menu abaixo para ver seus capítulos e comece sua aventura literária!</p>
             </div>
         </div>
         
-        <div class="guest-list" id="guestList"></div>
-        
-        <div class="stats">
-            <div class="stat-box">
-                <div class="stat-value" id="totalGuests">40</div>
-                <div class="stat-label">Total</div>
+        <div class="books-menu">
+            <h2>Biblioteca de Histórias</h2>
+            
+            <div class="book-item">
+                <div class="book-title">Peter Pan</div>
+                <div class="chapters-list">
+                    <div class="chapter-item"><a href="peter-pan-1.html" class="chapter-link">Capítulo 1: Peter Atravessa</a></div>
+                    <div class="chapter-item"><a href="peter-pan-2.html" class="chapter-link">Capítulo 2: A Chegada de Peter Pan</a></div>
+                    <div class="chapter-item"><a href="peter-pan-3.html" class="chapter-link">Capítulo 3: Voando para a Terra do Nunca</a></div>
+                    <div class="chapter-item"><a href="peter-pan-4.html" class="chapter-link">Capítulo 4: A Lagoa das Sereias</a></div>
+                    <div class="chapter-item"><a href="peter-pan-5.html" class="chapter-link">Capítulo 5: A Casa Subterrânea</a></div>
+                    <div class="chapter-item"><a href="peter-pan-6.html" class="chapter-link">Capítulo 6: O Navio Pirata</a></div>
+                    <div class="chapter-item"><a href="peter-pan-7.html" class="chapter-link">Capítulo 7: Capitão Gancho</a></div>
+                    <div class="chapter-item"><a href="peter-pan-8.html" class="chapter-link">Capítulo 8: O Relógio do Crocodilo</a></div>
+                </div>
             </div>
-            <div class="stat-box">
-                <div class="stat-value" id="presentGuests">0</div>
-                <div class="stat-label">Presentes</div>
+            
+            <div class="book-item">
+                <div class="book-title">Chapeuzinho Vermelho</div>
+                <div class="chapters-list">
+                    <div class="chapter-item"><a href="chapeuzinho-1.html" class="chapter-link">Capítulo 1: A Visita à Vovó</a></div>
+                    <div class="chapter-item"><a href="chapeuzinho-2.html" class="chapter-link">Capítulo 2: O Encontro com o Lobo</a></div>
+                    <div class="chapter-item"><a href="chapeuzinho-3.html" class="chapter-link">Capítulo 3: O Perigo na Casa da Vovó</a></div>
+                </div>
             </div>
-            <div class="stat-box">
-                <div class="stat-value" id="absentGuests">40</div>
-                <div class="stat-label">Faltantes</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value" id="childGuests">5</div>
-                <div class="stat-label">Crianças</div>
+            
+            <div class="book-item">
+                <div class="book-title">Os Três Porquinhos</div>
+                <div class="chapters-list">
+                    <div class="chapter-item"><a href="porquinhos-1.html" class="chapter-link">Capítulo 1: A Construção das Casas</a></div>
+                    <div class="chapter-item"><a href="porquinhos-2.html" class="chapter-link">Capítulo 2: A Chegada do Lobo</a></div>
+                    <div class="chapter-item"><a href="porquinhos-3.html" class="chapter-link">Capítulo 3: O Final Feliz</a></div>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="tab-content" id="map-tab">
-        <div class="map-container">
-            <h2>Disposição das Mesas</h2>
-            <img src="image.png" alt="Mapa do Local com Mesas">
-            <p class="map-description">Visualize acima a disposição das mesas no local do evento.</p>
+    <footer>
+        <div class="container">
+            <p>© 2023 Histórias para Dormir - Todos os direitos reservados</p>
+            <p>Desenvolvido com ❤️ para noites tranquilas</p>
         </div>
-    </div>
-
+    </footer>
+    
     <script>
-        // Lista de convidados inicial com números de mesa e informações de crianças
-        const initialGuests = [
-            { id: 1, name: "Ana Silva", confirmed: false, table: 1 },
-            { id: 2, name: "Bruno Costa", confirmed: false, table: 1 },
-            { id: 3, name: "Carlos Mendes", confirmed: false, table: 2 },
-            { id: 4, name: "Daniela Ramos", confirmed: false, table: 2 },
-            { id: 5, name: "Eduardo Santos", confirmed: false, table: 3 },
-            { id: 6, name: "Fernanda Lima", confirmed: false, table: 3 },
-            { id: 7, name: "Gabriel Oliveira", confirmed: false, table: 4, isChild: true, age: 8, smile: "😊" },
-            { id: 8, name: "Helena Souza", confirmed: false, table: 4, isChild: true, age: 5, smile: "😃" },
-            { id: 9, name: "Igor Almeida", confirmed: false, table: 5 },
-            { id: 10, name: "Juliana Castro", confirmed: false, table: 5 },
-            { id: 11, name: "Kaique Pereira", confirmed: false, table: 6, isChild: true, age: 10, smile: "😎" },
-            { id: 12, name: "Larissa Martins", confirmed: false, table: 6 },
-            { id: 13, name: "Marcos Ribeiro", confirmed: false, table: 7 },
-            { id: 14, name: "Natália Ferreira", confirmed: false, table: 7 },
-            { id: 15, name: "Otávio Dias", confirmed: false, table: 8 },
-            { id: 16, name: "Patrícia Gomes", confirmed: false, table: 8, isChild: true, age: 3, smile: "🥰" },
-            { id: 17, name: "Rafael Lopes", confirmed: false, table: 9 },
-            { id: 18, name: "Sara Monteiro", confirmed: false, table: 9 },
-            { id: 19, name: "Thiago Nunes", confirmed: false, table: 10 },
-            { id: 20, name: "Vanessa Carvalho", confirmed: false, table: 10, isChild: true, age: 7, smile: "🤗" },
-            { id: 21, name: "William Teixeira", confirmed: false, table: 11 },
-            { id: 22, name: "Yasmin Moreira", confirmed: false, table: 11 },
-            { id: 23, name: "Zé Ricardo", confirmed: false, table: 12 },
-            { id: 24, name: "Amanda Rocha", confirmed: false, table: 12 },
-            { id: 25, name: "Breno Pinto", confirmed: false, table: 13 },
-            { id: 26, name: "Camila Tavares", confirmed: false, table: 13 },
-            { id: 27, name: "Diego Moura", confirmed: false, table: 14 },
-            { id: 28, name: "Elisa Barbosa", confirmed: false, table: 14 },
-            { id: 29, name: "Fábio Correia", confirmed: false, table: 15 },
-            { id: 30, name: "Giovana Rezende", confirmed: false, table: 15 },
-            { id: 31, name: "Hugo Andrade", confirmed: false, table: 16 },
-            { id: 32, name: "Isabela Campos", confirmed: false, table: 16 },
-            { id: 33, name: "João Vitor", confirmed: false, table: 17 },
-            { id: 34, name: "Karen Duarte", confirmed: false, table: 17 },
-            { id: 35, name: "Leonardo Peixoto", confirmed: false, table: 18 },
-            { id: 36, name: "Mariana Vasconcelos", confirmed: false, table: 18 },
-            { id: 37, name: "Nicolas Brito", confirmed: false, table: 19 },
-            { id: 38, name: "Olivia Cardoso", confirmed: false, table: 19 },
-            { id: 39, name: "Paulo Henrique", confirmed: false, table: 20 },
-            { id: 40, name: "Quezia Fonseca", confirmed: false, table: 20 }
-        ];
-
-        // Carrega os convidados do localStorage ou usa a lista inicial
-        let guests = JSON.parse(localStorage.getItem('guestList')) || initialGuests;
-
-        // Elementos DOM
-        const guestListElement = document.getElementById('guestList');
-        const searchInput = document.getElementById('searchInput');
-        const showAllButton = document.getElementById('showAll');
-        const showPresentButton = document.getElementById('showPresent');
-        const showAbsentButton = document.getElementById('showAbsent');
-        const totalGuestsElement = document.getElementById('totalGuests');
-        const presentGuestsElement = document.getElementById('presentGuests');
-        const absentGuestsElement = document.getElementById('absentGuests');
-        const childGuestsElement = document.getElementById('childGuests');
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        // Filtro atual
-        let currentFilter = 'all';
-        let currentSearch = '';
-
-        // Renderiza a lista de convidados
-        function renderGuestList() {
-            guestListElement.innerHTML = '';
-            
-            const filteredGuests = guests.filter(guest => {
-                const matchesFilter = currentFilter === 'all' || 
-                                    (currentFilter === 'present' && guest.confirmed) || 
-                                    (currentFilter === 'absent' && !guest.confirmed);
-                
-                const matchesSearch = guest.name.toLowerCase().includes(currentSearch.toLowerCase());
-                
-                return matchesFilter && matchesSearch;
-            });
-
-            filteredGuests.forEach(guest => {
-                const guestElement = document.createElement('div');
-                guestElement.className = `guest-item ${guest.confirmed ? 'present' : 'absent'}`;
-                
-                // Verifica se é criança para adicionar idade e smile
-                const childInfo = guest.isChild 
-                    ? `<span class="child-age">${guest.age} anos <span class="child-smile">${guest.smile}</span></span>`
-                    : '';
-                
-                guestElement.innerHTML = `
-                    <input type="checkbox" id="guest-${guest.id}" ${guest.confirmed ? 'checked' : ''}>
-                    <div class="guest-info">
-                        <div class="guest-name">
-                            ${guest.name}
-                            ${childInfo}
-                        </div>
-                        <div class="guest-details">
-                            <span class="guest-status">${guest.confirmed ? 'Confirmado' : 'Pendente'}</span>
-                            <span class="guest-table">Mesa: ${guest.table}</span>
-                        </div>
-                    </div>
-                `;
-                
-                const checkbox = guestElement.querySelector('input');
-                checkbox.addEventListener('change', () => {
-                    guest.confirmed = checkbox.checked;
-                    saveGuests();
-                    updateStats();
-                    // Atualiza a classe para refletir o novo status
-                    guestElement.className = `guest-item ${guest.confirmed ? 'present' : 'absent'}`;
-                    // Atualiza o status
-                    guestElement.querySelector('.guest-status').textContent = guest.confirmed ? 'Confirmado' : 'Pendente';
-                });
-                
-                guestListElement.appendChild(guestElement);
-            });
-            
-            updateStats();
-        }
-
-        // Atualiza as estatísticas
-        function updateStats() {
-            const presentCount = guests.filter(g => g.confirmed).length;
-            const absentCount = guests.length - presentCount;
-            const childCount = guests.filter(g => g.isChild).length;
-            
-            totalGuestsElement.textContent = guests.length;
-            presentGuestsElement.textContent = presentCount;
-            absentGuestsElement.textContent = absentCount;
-            childGuestsElement.textContent = childCount;
-        }
-
-        // Salva a lista de convidados no localStorage
-        function saveGuests() {
-            localStorage.setItem('guestList', JSON.stringify(guests));
-        }
-
-        // Event listeners para filtros e busca
-        searchInput.addEventListener('input', (e) => {
-            currentSearch = e.target.value;
-            renderGuestList();
-        });
-
-        showAllButton.addEventListener('click', () => {
-            currentFilter = 'all';
-            renderGuestList();
-        });
-
-        showPresentButton.addEventListener('click', () => {
-            currentFilter = 'present';
-            renderGuestList();
-        });
-
-        showAbsentButton.addEventListener('click', () => {
-            currentFilter = 'absent';
-            renderGuestList();
-        });
-
-        // Event listeners para abas
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove a classe active de todas as abas e conteúdos
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Adiciona a classe active à aba clicada e ao conteúdo correspondente
-                tab.classList.add('active');
-                const tabId = tab.getAttribute('data-tab');
-                document.getElementById(`${tabId}-tab`).classList.add('active');
+        // Menu expansível
+        const bookTitles = document.querySelectorAll('.book-title');
+        
+        bookTitles.forEach(title => {
+            title.addEventListener('click', () => {
+                title.classList.toggle('active');
+                const chaptersList = title.nextElementSibling;
+                chaptersList.classList.toggle('show');
             });
         });
-
-        // Renderiza a lista inicial
-        renderGuestList();
-
-        // Verifica se há dados salvos
-        if (localStorage.getItem('guestList')) {
-            console.log('Dados de convidados carregados do localStorage.');
-        } else {
-            console.log('Usando lista de convidados inicial e salvando no localStorage.');
-            saveGuests();
-        }
     </script>
 </body>
 </html>

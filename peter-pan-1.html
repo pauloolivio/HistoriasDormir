@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Pan - Capítulo 1 | Histórias para Dormir</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #3498db;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        
+        .story-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .story-title {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .chapter-number {
+            display: block;
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .story-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .story-content p {
+            margin-bottom: 20px;
+            text-indent: 30px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .nav-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .nav-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .nav-button.disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .story-container {
+                padding: 20px;
+            }
+            
+            .story-title {
+                font-size: 1.4rem;
+            }
+            
+            .story-content {
+                font-size: 1rem;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Histórias para Dormir</h1>
+            <a href="index.html" class="back-link">← Voltar para a biblioteca</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="story-container">
+            <h2 class="story-title">
+                <span class="chapter-number">Peter Pan - Capítulo 1</span>
+                PETER ATRAVESSA
+            </h2>
+            <div class="story-content">
+                <p>Todas as crianças, menos uma, crescem. Elas entendem isso rápido. Wendy descobriu esse fato com apenas dois anos. Nesse dia, a pequena brincava em um jardim, colheu outra flor do chão e decidiu levá-la correndo para sua mãe. Provavelmente, estava tão encantadora que a senhora Darling, ao vê-la, pôs as mãos no peito e suspirou:</p>
+                
+                <p>Ah, por que você não fica assim para sempre?</p>
+                
+                <p>Bastou isso para, desde aquele dia, Wendy entender que deveria, obrigatoriamente, crescer. Todos nós sabemos disso. Percebemos logo após alcançarmos os dois anos de idade. Dois anos é o começo do fim.</p>
+                
+                <p>A família morava na casa nº 14. Antes de Wendy chegar, sua mãe mandava em tudo. Era uma pessoa adorável, com a cabeça cheia de ideias românticas e palavras doces e provocadoras. Seus pensamentos eram como os jogos de caixinhas lá do Oriente misterioso, aquelas que cabem uma dentro da outra. Não importa quantas você abra, sempre encontrará mais uma dentro. Na boca graciosamente provocadora da senhora Darling havia um beijo que Wendy nunca conseguiu ganhar, embora estivesse ali, eternamente visível, no cantinho direito dos lábios.</p>
+                
+                <p>O senhor Darling a conquistou da seguinte maneira: muitos rapazes que foram meninos na mesma época em que ela ainda era uma menina descobriram, simultaneamente, que a amavam. Todos correram até sua casa para pedi-la em casamento, exceto o senhor Darling, que foi de táxi e chegou primeiro. Foi assim que ele conquistou quase tudo nela, menos aquela caixinha mais escondida e o beijo do cantinho direito dos lábios. Aliás, ele nunca sequer soube da existência de tal caixinha. Depois, com o passar do tempo, também desistiu do beijo. Wendy achava que Napoleão teria conseguido, mas posso imaginá-lo tentando e desistindo irritado, batendo a porta.</p>
+                
+                <p>O senhor Darling costumava se gabar para Wendy. Ele costumava dizer que sua mãe não somente o amava, mas também o respeitava. Era um daqueles sujeitos sérios que conhecem o mercado financeiro. Claro que ninguém entende de verdade esse tal mercado, mas ele parecia mesmo entender. Às vezes, dizia que as ações tinham subido e que o valor dos títulos havia caído. Falava com tanta propriedade que qualquer mulher o respeitaria.</p>
+                
+                <p>A senhora Darling se casou de branco. No começo, ela mantinha as contas da casa perfeitamente organizadas, quase com alegria, como se quisesse ganhar uma competição. Não deixava de anotar sequer o preço de um maço de couve. No entanto, pouco a pouco, couves-flores inteiras foram deixando de ser contabilizadas. Agora, o que havia nos livros-caixa eram desenhos de bebês sem rosto. Ela os desenhava em vez de fazer contas. Era como se os estivesse atraindo.</p>
+                
+                <p>Assim, primeiro veio Wendy, depois John e, por fim, Michael.</p>
+                
+                <p>Uma semana ou duas após Wendy chegar ainda pairavam dúvidas se eles seriam capazes de criá-la. Afinal, tratava-se de mais uma boca para alimentar. Por mais orgulhoso que o senhor Darling estivesse com o nascimento da filha, ele era um homem zeloso com as contas da casa. Sentado à beira da cama, ele segurava a mão da esposa enquanto calculava as despesas futuras. Ela, por sua vez, suplicava com os olhos. Queria arriscar, fosse como fosse. No entanto, não era assim que ele fazia as coisas. Tudo deveria estar na ponta do lápis. Preto no branco. Se acaso os palpites da senhora Darling atrapalhassem suas contas, ele as recomeçava.</p>
+                
+                <p>Não me interrompa agora, ele implorava.</p>
+                
+                <p>Cheguei a uma libra e dezessete xelins de despesas da casa, mais duas libras e seis xelins no escritório. Posso cortar o café que tomo lá, digamos que dê dez xelins; isso nos deixa com duas libras, nove xelins e seis centavos; somando com seus dezoito e três, temos três libras e sete; com as cinco zero zero do salário, dá oito libras, nove e sete... Quem está se mexendo? Oito, nove, sete, vão sete... Não diga nada, minha querida... E tem aquela libra que você emprestou para o homem que veio pedir à porta... Quietinha, minha criança. Soma mais uma criança... Pronto, já me perdi! Eu disse nove libras, nove xelins e sete centavos? Sim, eu disse. Nove, nove e sete. A pergunta é: conseguiremos passar um ano com nove, nove e sete?</p>
+                
+                <p>Claro que conseguiremos, George! A senhora Darling exclamou, tomando partido sempre a favor de Wendy. Contudo, ele era o mais firme dos dois.</p>
+                
+                <p>Lembre-se da caxumba! Anunciou ele quase em tom de ameaça e começando tudo de novo. — Para a caxumba, vamos reservar uma libra, mas imagino que está mais para trinta xelins... não fale agora... Sarampo, uma libra e cinco; rubéola, meio guinéu, isso dá duas libras, quinze xelins e seis... Nada de batucar esse dedinho... para tosse comprida, uns quinze xelins...</p>
+                
+                <p>E seguia somando, porém, as despesas sempre apresentavam resultados diferentes. Por fim, os gastos com Wendy couberam nas contas, mas foi por pouco. O custo da caxumba, por exemplo, foi reduzido a doze xelins e seis centavos, enquanto sarampo e rubéola terminaram contabilizados como uma única doença.</p>
+                
+                <p>A chegada de John causou o mesmo alvoroço. Michael passou ainda mais apertado, mas eles ficaram com os dois. Em pouco tempo era possível ver os três caminhando em fila para o jardim de infância da senhorita Fulsom, acompanhados de sua babá.</p>
+                
+                <p>A senhora Darling gostava das coisas muito corretas. O senhor Darling era obcecado em ser exatamente como seus vizinhos; portanto, é óbvio que tinham uma babá. Como não tinham dinheiro, por conta da quantidade de leite que precisavam comprar para as crianças, essa tal babá era uma cadela toda orgulhosa, da raça terra-nova, chamada Nana, que não tinha casa até ser contratada pelos Darlings. No entanto, Nana já tinha experiência em zelar pelos pequenos mesmo antes disso. Ela conheceu os Darlings em Kensington Gardens, onde passava seu tempo livre xeretando carrinhos de bebê e fazendo inimizade com as babás desleixadas, já que as seguia até suas casas e as denunciava às patroas. Nana provou ser uma babá bastante valiosa. Era rigorosa na hora dos banhos e, à noite, ficava alerta ao menor ruído que seus protegidos fizessem. Obviamente sua casinha ficava no próprio quarto das crianças. Tinha um talento nato para saber quando uma tosse era algo sem importância ou quando exigia um cachecol no pescoço. Acreditava piamente na eficácia dos remédios antigos, como folha de ruibarbo. Bufava em desprezo quando ouvia modernices sobre germes e coisas do tipo. Vê-la acompanhando as crianças à escola era uma aula de etiqueta: caminhava placidamente ao lado delas quando andavam bem-comportadas e lhes dava cabeçadas até voltarem para a fila caso tentassem se desviar do caminho. Nos dias em que John tinha futebol, ela nunca esquecia de fazê-lo levar um agasalho. Nana geralmente carregava um guarda-chuva na boca, caso chovesse. Na escola da senhorita Fulsom havia um porão que servia como sala de espera para as babás. Lá, todas aguardavam sentadas em cadeiras escolares enquanto Nana ficava deitada no chão. Essa era a única diferença entre elas. As babás agiam como se Nana não estivesse lá, como se fossem de uma classe muito superior, e a cachorra, por sua vez, tinha horror às fofocas. Nana também não gostava nem um pouco das visitas que as amigas da senhora Darling faziam ao quarto das crianças. Ainda assim, quando isso acontecia, ela trocava o babador de Michael por um azul com bordados, ajeitava as roupas de Wendy e dava uma lambida rápida no cabelo de John.</p>
+                
+                <p>Nenhum outro quarto de criança era cuidado de maneira mais correta. O senhor Darling sabia disso, embora às vezes se preocupasse com o que os vizinhos pudessem comentar.</p>
+                
+                <p>Afinal, ele tinha uma reputação a zelar na sociedade.</p>
+                
+                <p>Havia outra questão sobre Nana que também o inquietava. Ele às vezes tinha a impressão de que ela não o respeitava.</p>
+                
+                <p>— Tenho certeza de que ela tem uma enorme admiração por você, George — a senhora Darling tentava acalmá-lo e então sinalizava às crianças para que fossem especialmente amorosas com o pai.</p>
+                
+                <p>Logo começavam a dançar alegremente, ocasiões em que a única outra criada, Liza, às vezes era convidada a participar. Ela parecia uma anã com sua saia longa e a touca de empregada, grandes demais para ela, embora tivesse jurado quando foi contratada que seus tempos de criança tinham ficado para trás. Como eram alegres aquelas brincadeiras! Mais alegre ainda era a senhora Darling, rodopiando tão animadamente que a única coisa visível nela era o beijo. Nesses momentos, se alguém corresse até ela talvez conseguisse roubá-lo. Não havia no mundo família mais feliz. Isso durou até a chegada de Peter Pan.</p>
+                
+                <p>A primeira vez que a senhora Darling ouviu falar sobre Peter Pan foi quando estava organizando os pensamentos de seus filhos. É costume de toda boa mãe, depois que as crianças vão dormir à noite, vistoriar as mentes delas e garantir que tudo esteja em ordem para a manhã seguinte, recolocando nos devidos lugares os muitos pensamentos que vagaram por lá durante o dia. Se você conseguisse ficar acordado durante a noite (coisa da qual obviamente não é capaz), poderia ver sua mãe fazendo o mesmo. Aposto que acharia muito interessante assisti-la. É como organizar gavetas. Você veria sua mãe ajoelhada, imagino, perdida em pensamentos divertidos sobre algo que ela encontrou lá dentro da sua cabeça, perguntando-se onde é que você foi descobrir aquelas coisas, fazendo deduções agradáveis e outras nem tanto. Algumas dessas coisas ela teria vontade de apertar contra a bochecha, como se fossem gatinhos fofos; já outras ela esconderia, para que sumissem logo da frente dela. Quando você acorda de manhã, todos os desejos de fazer travessuras e maldades estão dobrados bem pequenininhos no fundo da sua cabeça. Na parte de cima, limpos e perfumados, ficam todos os pensamentos mais bonitos, prontos para serem usados.</p>
+                
+                <p>Não sei se você já viu o mapa da mente de uma pessoa. Os médicos às vezes conseguem desenhar partes do corpo — e ver o desenho do seu próprio corpo é muito interessante —, mas tente fazer um médico desenhar o mapa da mente de uma criança e você vai ver como ele fica confuso, fazendo muitas voltas. Você vai ver muitas linhas em ziguezague. Provavelmente essas linhas são as estradas da ilha, pois a Terra do Nunca é mais ou menos uma ilha, com lugares que parecem explodir de cores por todo lado, recifes de corais e barcos prontos para zarpar, com nativos e esconderijos secretos, gnomos que na maioria das vezes são alfaiates, rios que correm por dentro de cavernas, príncipes com seis irmãos mais velhos, uma cabana praticamente caindo aos pedaços e uma velhinha baixinha de nariz pontudo. Se fosse só isso, seria fácil desenhar um mapa da ilha, mas ainda falta o primeiro dia de aula, o catecismo, os pais, o chafariz, a aula de costura, os assassinatos, os enforcamentos, os verbos transitivos indiretos, o dia do pudim de chocolate, o modo de usar suspensórios, os noventa e nove xelins e três centavos para arrancar seu próprio dente que está mole e por aí vai. Tudo isso é parte da ilha ou está em outro mapa sobreposto. É muito confuso, ainda mais porque nada na ilha fica parado no mesmo lugar.</p>
+                
+                <p>Obviamente que as Terras do Nunca variam muito entre si. Na de John, por exemplo, ele atirava em flamingos que voavam sobre uma lagoa. Já na de Michael, que ainda era bem pequeno, havia um único flamingo, com lagoas voando por cima dele. John morava em um barco virado de cabeça para baixo na areia. A casa de Michael era uma oca pontuda enquanto Wendy possuía uma linda residência de folhas impecavelmente costuradas. John não tinha amigos. Já os de Michael só vinham à noite. Wendy, por sua vez, tinha um lobo que havia sido abandonado pelos pais. Em geral, todas as Terras do Nunca se parecem com os lugares onde vivemos. Se as colocarmos lado a lado, será possível ver a semelhança. Naquelas praias mágicas, as crianças brincam eternamente com seus barquinhos de vime. Nós também já estivemos lá, ainda podemos ouvir o som das ondas, mas nunca mais pisaremos naquelas praias.</p>
+                
+                <p>De todas as ilhas encantadoras que existem, a Terra do Nunca é a mais aconchegante e compacta; ela não é larga e extensa, com distâncias chatas entre uma aventura e outra. Lá, tudo é bem pertinho. Não dá nem um pouquinho de medo de brincar durante o dia, com todas as cadeiras e toalhas de piquenique, mas dois minutos depois de irmos para a cama a ilha se torna praticamente real. É por isso que existem abajures.</p>
+                
+                <p>Às vezes, em suas viagens pelas mentes das crianças, a senhora Darling se deparava com coisas que não entendia. Entre elas, a mais misteriosa que encontrou foi a palavra "Peter". Ela nunca tinha ouvido falar de nenhum Peter, mesmo assim esse nome surgia aqui e ali nas mentes de John e Michael. Na de Wendy ele aparecia rabiscado por todos os cantos. Essa palavra se destacava mais do que qualquer outra. Por isso, quando a senhora Darling a lia, sentia que esse nome tinha um ar estranhamente atrevido.</p>
+                
+                <p>Sim, ele é bem atrevido, admitiu Wendy, um pouco contrariada.</p>
+                
+                <p>Sua mãe não parava de perguntar:</p>
+                
+                <p>Mas quem é ele, meu amor?</p>
+                
+                <p>Você sabe, mamãe. É o Peter Pan.</p>
+                
+                <p>A senhora Darling não sabia. Só depois de ficar pensando sobre sua própria infância é que ela se lembrou de um Peter Pan, que muitos diziam morar com as fadas. Contavam histórias esquisitas sobre ele. Por exemplo, que quando crianças morriam, ele as acompanhava por uma parte do caminho, para que não ficassem com medo. Ainda criança, ela chegou a acreditar na existência dele, mas agora que era uma mulher casada e esclarecida, achava improvável que pudesse existir uma pessoa assim.</p>
+                
+                <p>Além do mais, explicou para Wendy, ele já seria um adulto agora.</p>
+                
+                <p>Não! Ele não é adulto, assegurou Wendy, ele é do meu tamanho.</p>
+                
+                <p>O que Wendy quis dizer é que eles tinham o mesmo tamanho em termos de mente e de corpo. Ela não sabia como sabia disso, mas era claro para ela.</p>
+                
+                <p>A senhora Darling foi contar ao senhor Darling, que sorriu daquela inocência:</p>
+                
+                <p>Pode ter certeza, respondeu, que isso é alguma bobagem que a Nana enfiou na cabeça deles. É bem o tipo de ideia que uma cachorra teria. Não se preocupe com isso. Logo passa.</p>
+                
+                <p>Mas não passou. Pouco tempo depois, o tal garoto encrenqueiro deu um belo susto na senhora Darling.</p>
+                
+                <p>Crianças costumam ter aventuras extraordinárias sem perceber. Por exemplo, uma criança pode se lembrar de mencionar, uma semana mais tarde, que havia encontrado seu falecido pai na floresta e brincado com ele. Foi dessa forma trivial que, uma manhã, Wendy fez uma revelação perturbadora. Apareceram folhas de árvore no chão do quarto das crianças que certamente não estavam lá quando foram dormir. A senhora Darling ficou intrigada, pois Wendy observou com um sorriso complacente:</p>
+                
+                <p>Deve ter sido o Peter outra vez!</p>
+                
+                <p>Como assim, Wendy?</p>
+                
+                <p>É muito feio ele não limpar os pés antes de entrar! Suspirou Wendy.</p>
+                
+                <p>Ela era muito asseada.</p>
+                
+                <p>Wendy explicou, bastante calma e segura, que de vez em quando Peter entrava no quarto à noite e sentava-se à beira da cama para tocar sua flauta. Infelizmente, ela nunca acordava, por isso não sabia dizer como sabia disso, mas estava tudo muito claro para ela.</p>
+                
+                <p>Isso é bobagem, querida. Ninguém pode entrar em nossa casa sem antes bater à porta.</p>
+                
+                <p>Eu acho que ele entra pela janela, replicou Wendy.</p>
+                
+                <p>Meu amor, estamos no terceiro andar.</p>
+                
+                <p>As folhas não estavam perto da janela, mamãe?</p>
+                
+                <p>Era verdade. As folhas tinham aparecido próximas à janela.</p>
+                
+                <p>A senhora Darling não sabia o que pensar. Tudo parecia tão natural para Wendy que era difícil afirmar que isso não passava de um sonho da menina.</p>
+                
+                <p>Minha filha, por que você não me contou isso antes?</p>
+                
+                <p>Eu esqueci, disse Wendy sem dar atenção.</p>
+                
+                <p>Ela estava apressada para tomar seu café da manhã.</p>
+                
+                <p>Ora, sem dúvida ela só poderia ter sonhado.</p>
+                
+                <p>Novamente, ali estavam as folhas. A senhora Darling as examinou com cuidado. Eram apenas esqueletos de folhas secas, mas ela tinha certeza de que não pertenciam a nenhum tipo de árvore da Inglaterra. Saiu engatinhando pelo chão, segurando uma vela em busca das pegadas do invasor. Cutucou a saída da lareira com o atiçador, bateu com a mão nas paredes, desenrolou uma fita métrica da janela até a calçada e viu que seria uma queda de quase dez metros, sem nenhuma calha ou cano para escalar.</p>
+                
+                <p>Sem dúvida que Wendy só poderia ter sonhado aquilo.</p>
+                
+                <p>Só que Wendy não tinha sonhado, como ficou provado na noite seguinte, quando pode-se dizer que as extraordinárias aventuras daquelas crianças começaram.</p>
+                
+                <p>Nessa noite específica, os três já tinham ido dormir. Por acaso, era a noite de folga de Nana. A senhora Darling havia dado banho e cantado para todos dormirem até que cada um deles soltasse sua mão e deslizasse para o mundo dos sonhos.</p>
+                
+                <p>Pareciam tão seguros e aconchegados que ela sorria ao lembrar do medo bobo que sentira. Sentou-se tranquilamente para costurar em frente à lareira.</p>
+                
+                <p>Estava cosendo uma roupa para Michael, que começaria a usar camisas assim que fizesse aniversário. O fogo estava agradável. No quarto das crianças havia apenas a luz suave de três abajures, e logo a roupa que a senhora Darling costurava caiu sobre o seu colo. Sua cabeça pendeu graciosamente sobre o peito. Caiu no sono. Olhe só para esses quatro. Wendy e Michael lá, John aqui e a senhora Darling em frente à lareira. Deveria haver mais um abajur.</p>
+                
+                <p>A senhora Darling sonhou que a Terra do Nunca tinha se aproximado muito do mundo real e que um menino estranho havia atravessado para o lado de cá. Ela não teve medo dele, pois parecia já ter visto aquele rosto em muitas mulheres sem filhos. Talvez tivesse visto aquele rosto em algumas mães também. Em seu sonho, o menino havia rasgado o véu que esconde a Terra do Nunca. Wendy, John e Michael espiavam pelo buraco aberto por ele.</p>
+                
+                <p>O sonho por si só teria sido apenas uma coisa à toa, mas enquanto a senhora Darling sonhava, a janela do quarto se escancarou. Um menino entrou por ela e caiu rolando pelo chão. Vinha acompanhado por uma luzinha estranha, um pouco menor do que o punho de uma criança, voando feito uma flecha pelo cômodo como se estivesse viva. Acho que foi essa luz que acordou a senhora Darling.</p>
+                
+                <p>Ela gritou ao ver o garoto. No mesmo instante, soube que aquele era Peter Pan. Se eu, você ou Wendy estivéssemos lá, teríamos notado que ele era muito parecido com o beijo da senhora Darling. Era um garoto encantador, coberto com um traje de folhas secas coladas com seiva de árvore, mas o mais fascinante é que ele ainda tinha todos os dentes de leite. Quando percebeu que estava diante de uma adulta, rosnou para ela, deixando à mostra suas pequenas pérolas.</p>
+            </div>
+            
+            <div class="navigation">
+                <a href="#" class="nav-button disabled">Capítulo Anterior</a>
+                <a href="peter-pan-2.html" class="nav-button">Próximo Capítulo →</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Histórias para Dormir - Todos os direitos reservados</p>
+            <p>Desenvolvido com ❤️ para noites tranquilas</p>
+        </div>
+    </footer>
+</body>
+</html>
